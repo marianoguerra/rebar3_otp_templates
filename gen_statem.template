@@ -1,0 +1,5 @@
+{description, "gen_statem module"}.
+{variables, [
+    {name, "my_gen_statem", "Module Name"}
+]}.
+{template, "gen_statem.erl.dtl", "{{name}}.erl"}.

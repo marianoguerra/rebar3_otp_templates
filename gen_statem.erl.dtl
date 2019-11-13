@@ -1,0 +1,50 @@
+%% -*- erlang-indent-level: 4;indent-tabs-mode: nil -*-
+%% ex: ts=4 sw=4 et
+-module({{name}}).
+
+% http://erlang.org/doc/design_principles/statem.html
+-behavior(gen_statem).
+
+% API
+-export([start_link/0]).
+
+% Callbacks
+-export([init/1]).
+-export([callback_mode/0]).
+-export([handle_event/4]).
+
+% API
+
+% see: http://erlang.org/doc/man/gen_statem.html#start_link-3
+start_link_local() ->
+    start_link_local(#{}).
+
+start_link_local(Args) ->
+    start_link_local(Args, []).
+
+start_link_local(Args, Opts) ->
+    gen_statem:start_link({local, ?MODULE}, ?MODULE, Args, Opts).
+
+start_link() ->
+    start_link(#{}).
+
+start_link(Args) ->
+    start_link(Args, []).
+
+start_link(Args, Opts) ->
+    gen_statem:start_link(?MODULE, Args, Opts).
+
+% Callbacks
+
+init(_Args) ->
+    {ok, state, data}.
+
+callback_mode() ->
+    handle_event_function.
+
+handle_event({call, _From}, EventData, State, _Data) ->
+    error({unhandled_call, EventData, State});
+handle_event(Event, EventData, State, _Data) ->
+    error({unhandled_event, Event, EventData, State}).
+
+% Internal functions
