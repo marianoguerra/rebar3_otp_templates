@@ -6,23 +6,30 @@
 -behaviour(supervisor).
 
 % API
--export([start_link_local/0]).
--export([start_link/0]).
+-export([start_link_local/0, start_link_local/1]).
+-export([start_link/0, start_link/1]).
 
 % Callbacks
 -export([init/1]).
 
 % API
 
+% see http://erlang.org/doc/man/supervisor.html#start_link-3
 start_link_local() ->
-    supervisor:start_link({local, ?MODULE}, ?MODULE, []).
+    start_link_local(#{}).
+
+start_link_local(Args) ->
+    supervisor:start_link({local, ?MODULE}, ?MODULE, Args).
 
 start_link() ->
-    supervisor:start_link(?MODULE, []).
+    start_link(#{}) ->
+
+start_link(Args) ->
+    supervisor:start_link(?MODULE, Args).
 
 % Callbacks 
 
-init([]) ->
+init(_Args) ->
     SupFlags = #{strategy => one_for_all,
                  intensity => 0,
                  period => 1},
@@ -35,3 +42,5 @@ init([]) ->
                    modules => [{{child_name}}]}                % optional
 
     {ok, {SupFlags, ChildSpecs}}.
+
+% Internal functions
