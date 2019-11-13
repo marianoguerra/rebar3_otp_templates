@@ -1,0 +1,37 @@
+%% -*- erlang-indent-level: 4;indent-tabs-mode: nil -*-
+%% ex: ts=4 sw=4 et
+-module({{name}}).
+
+% http://erlang.org/doc/design_principles/sup_princ.html
+-behaviour(supervisor).
+
+% API
+-export([start_link_local/0]).
+-export([start_link/0]).
+
+% Callbacks
+-export([init/1]).
+
+% API
+
+start_link_local() ->
+    supervisor:start_link({local, ?MODULE}, ?MODULE, []).
+
+start_link() ->
+    supervisor:start_link(?MODULE, []).
+
+% Callbacks 
+
+init([]) ->
+    SupFlags = #{strategy => one_for_all,
+                 intensity => 0,
+                 period => 1},
+
+    ChildSpecs = #{id => my_child_id,                          % mandatory
+                   start => {my_child_module, start_link, []}, % mandatory
+                   restart => permanent,                       % optional
+                   shutdown => 5000,                           % optional
+                   type => worker,                             % optional
+                   modules => [{{child_name}}]}                % optional
+
+    {ok, {SupFlags, ChildSpecs}}.

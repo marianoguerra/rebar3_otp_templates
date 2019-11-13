@@ -1,0 +1,6 @@
+{description, "supervisor module"}.
+{variables, [
+    {name, "my_supervisor", "Module Name"},
+    {child_name, "my_child", "Child Module Name"}
+]}.
+{template, "supervisor.erl.dtl", "{{name}}.erl"}.

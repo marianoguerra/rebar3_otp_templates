@@ -18,13 +18,31 @@ git pull origin master
 
 ## Usage
 
+Modules are created in the current directory.
+
+### gen\_server
+
 ```
 $ rebar3 new gen_server name=foo
 
 ===> Writing foo.erl
 ```
 
-Modules are created in the current directory.
+### gen\_statem
+
+```
+$ rebar3 new gen_statem name=foo
+
+===> Writing foo.erl
+```
+
+### supervisor
+
+```
+$ rebar3 new supervisor name=sup child_name=sup_child
+
+===> Writing sup.erl
+```
 
 ## Notes
 
