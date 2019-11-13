@@ -1,0 +1,5 @@
+{description, "gen_server module"}.
+{variables, [
+    {name, "my_gen_server", "Module Name"}
+]}.
+{template, "gen_server.erl.dtl", "{{name}}.erl"}.
