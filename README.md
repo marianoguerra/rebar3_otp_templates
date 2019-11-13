@@ -1,5 +1,7 @@
 # Rebar3 OTP Behavior Templates
 
+[Rebar3](http://www.rebar3.org/) [Erlang](https://www.erlang.org/) [Templates](http://www.rebar3.org/docs/using-templates) for common [OTP](https://erlang.org/doc/design_principles/des_princ.html) [behaviors](http://erlang.org/doc/design_principles/des_princ.html#behaviours).
+
 ## Setup
 
 Do this only once:
