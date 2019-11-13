@@ -46,4 +46,6 @@ $ rebar3 new supervisor name=sup child_name=sup_child
 
 ## Notes
 
-gen\_server template based on https://gist.github.com/sergium/e65a41d7e6956c436177
+* gen\_server template based on https://gist.github.com/sergium/e65a41d7e6956c436177
+* gen\_statem template based on https://gist.github.com/eproxus/28fd864e2ba607d13ed4f5abc89ca27a
+* supervisor based on https://gist.github.com/eproxus/28fd864e2ba607d13ed4f5abc89ca27a and snippet from tsloughter
